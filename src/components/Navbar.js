@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { NavLink, useNavigate, useMatch } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 
 function Navbar() {
 
@@ -10,7 +10,6 @@ function Navbar() {
 
     const match = useMatch("/");
 
-    const navigate = useNavigate();
 
     const linksRef = useRef(null);
     const linksContainerRef = useRef(null);
@@ -188,7 +187,7 @@ const Wrapper = styled.nav`
 
     .navbar-links-container {
         overflow: hidden;
-        transition: all 0.3s linear;
+
         position: absolute;
         z-index: 4;
         .link.active {
