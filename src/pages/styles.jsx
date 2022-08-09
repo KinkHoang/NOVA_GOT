@@ -8,7 +8,7 @@ export const LoginContainer = styled.div`
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
-  background-color: #0b0051;
+  background-color: #000000;
   opacity: 0.85;
   border-radius: 20px;
 `;

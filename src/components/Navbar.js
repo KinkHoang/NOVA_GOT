@@ -49,7 +49,20 @@ function Navbar() {
                 } ${!match && "normal"}`}
             >
                 <div className="navbar-header">
-                    <h2 onClick={() => navigate("/home")}>Nova GOT</h2>
+                <ul className="navbar-links" ref={linksRef}>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) =>
+                                    isActive ? "link active" : "link"
+                                }
+                                to={"/home"}
+                            >
+                                <h3>Nova GOT</h3>
+                            </NavLink>
+                        </li>
+                       
+                    </ul>
+                
                     <FaBars
                         className={`navbar-toggle ${isToggle && "rotate"}`}
                         onClick={() => setIsToggle(!isToggle)}
@@ -89,6 +102,23 @@ function Navbar() {
                         </li>
                     </ul>
                 </div>
+                <div className="navbar-header2" >
+                <ul className="navbar-links" ref={linksRef}>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) =>
+                                    isActive ? "link active" : "link"
+                                }
+                                to={"/"}
+                            >
+                                <h4>LogOut</h4>
+                            </NavLink>
+                        </li>
+                       
+                    </ul>
+                    
+
+                </div>
             </div>
         </Wrapper>
     );
@@ -115,6 +145,13 @@ const Wrapper = styled.nav`
             color: var(--clr-primary-4);
         }
     }
+        .navbar-header2 {
+
+        h4 {
+            cursor: pointer;
+
+        }
+    }
 
     .navbar-toggle {
         cursor: pointer;
@@ -130,10 +167,6 @@ const Wrapper = styled.nav`
     .navbar-header svg,
     .navbar-social-icons svg {
         fill: dodgerblue;
-    }
-
-    .link.active {
-        border-bottom: 2px solid var(--clr-primary-6);
     }
 
     .link {
@@ -158,6 +191,9 @@ const Wrapper = styled.nav`
         transition: all 0.3s linear;
         position: absolute;
         z-index: 4;
+        .link.active {
+        border-bottom: 2px solid var(--clr-primary-6);
+    }
     }
 
     @media screen and (min-width: 800px) {

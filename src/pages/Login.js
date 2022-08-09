@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import {useState} from "react";
-import { Typography, Input} from "antd";
+import { Typography, Input, Form} from "antd";
 
 import "./style.css";
 import * as S from "./styles";
@@ -20,8 +20,8 @@ function Login() {
         setPasswordInput(e.target.value);
     }
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
+    const handleLoginSubmit = () => {
+
         let hardcodedCred = {
             email: 'hoang@gmail.com',
             password: '123456'
@@ -32,45 +32,44 @@ function Login() {
             sessionStorage.setItem('auth-token', token);
             navigate("/home");
 
-        } else {
-
-            alert('wrong email or password');
         }
     }
 
     return (
 
-            
-          
          <S.LoginContainer>
          <S.Inside>
            <Title
              style={{
-               color: "white",
+               color: "red",
                textAlign: "center",
              }}
              level={2}
            >
-             Login
+             Nova GOT
            </Title>
    
            <S.FormLogin>
-           <form className='form-login' autoComplete="off" onSubmit={handleLoginSubmit}>
-                    <div className="form-group">
+           <Form className='form-login' autoComplete="off" onFinish={handleLoginSubmit}>
                     
-                    <input
+                    <Form.Item
+                    name='email'
+                    rules={[{ required: true, message: 'Please enter your email' }]}>
+                    <Input
                     name = "email"
                     type="text"
                     className="input-login"
                     id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
                     placeholder="Enter your email"
                     value={emailInput}
                     onChange={handleEmailChange}
                     />
-                </div>
-                <div className="form-group">
+                    </Form.Item>
 
+                <Form.Item
+                  name='password'
+                  rules={[{ required: true, message: 'Please enter your password' }]}
+                >
                     <Input.Password
                     name = "password"
                     type="password"
@@ -80,66 +79,14 @@ function Login() {
                     value={passwordInput}
                     onChange={handlePasswordChange}
                     />
-                </div>
+                    </Form.Item>
+
                 <button type="submit" className="btn btn-primary">
                     Login
                 </button>
                 
                 
-        </form>
-             {/* <Form
-               form={loginForm}
-               initialValues={{ remember: true }}
-               onFinish={(values) => handleLogin(values)}
-               autoComplete="off"
-             >
-               <Form.Item
-                 name="email"
-                 rules={[{ required: true, message: "Please input your email!" }]}
-               >
-                 <Input
-                   className="input-login"
-                   placeholder="Email/Số điện thoại của bạn"
-                 />
-               </Form.Item>
-               <Form.Item
-                 name="password"
-                 rules={[
-                   { required: true, message: "Please input your password!" },
-                 ]}
-               >
-                 <Input.Password
-                   className="input-login"
-                   placeholder="Mật khẩu của bạn"
-                 />
-               </Form.Item>
-               <Form.Item name="remember" valuePropName="checked">
-                 <Checkbox className="checkbox-login">Remember me</Checkbox>
-               </Form.Item>
-               <Form.Item className="form-login">
-                 <Button htmlType="submit" className="btn-login">
-                   Đăng nhập
-                 </Button>
-               </Form.Item>
-               <Divider
-                 className="divider-login"
-                 style={{
-                   color: "white",
-                 }}
-               >
-                 Hoặc
-               </Divider>
-               <Form.Item style={{ pointerEvents: "none" }}>
-                 <Button
-                   style={{ pointerEvents: "none" }}
-                   className="btn-login btn-login-fb"
-                 >
-                   Đăng nhập với Facebook
-                   <FacebookFilled />
-                 </Button> */}
-               {/* </Form.Item> */}
-   
-               
+        </Form>
 
            </S.FormLogin>
          </S.Inside>
