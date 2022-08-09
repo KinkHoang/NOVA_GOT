@@ -1,6 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import {useState} from "react";
-import "./style.css"
+import { Typography, Input} from "antd";
+
+import "./style.css";
+import * as S from "./styles";
+
+const { Title } = Typography;
 function Login() {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
@@ -34,32 +39,43 @@ function Login() {
     }
 
     return (
-        <div className="login-page">
 
-            <form className='form-login' autoComplete="off" onSubmit={handleLoginSubmit}>
-                <fieldset>
-                    <legend>Login:</legend>
+            
+          
+         <S.LoginContainer>
+         <S.Inside>
+           <Title
+             style={{
+               color: "white",
+               textAlign: "center",
+             }}
+             level={2}
+           >
+             Login
+           </Title>
+   
+           <S.FormLogin>
+           <form className='form-login' autoComplete="off" onSubmit={handleLoginSubmit}>
                     <div className="form-group">
-                    <label name = "email">Email:</label>
+                    
                     <input
                     name = "email"
                     type="text"
-                    className="form-control"
+                    className="input-login"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
-                    placeholder="Enter email"
+                    placeholder="Enter your email"
                     value={emailInput}
                     onChange={handleEmailChange}
                     />
                 </div>
                 <div className="form-group">
-                <label name = "password">Password:</label>
-                    <input
+
+                    <Input.Password
                     name = "password"
                     type="password"
                     autoComplete="new-password"
-                    className="form-control"
-                    id="exampleInputPassword1"
+                    id="input-login"
                     placeholder="Password"
                     value={passwordInput}
                     onChange={handlePasswordChange}
@@ -68,11 +84,66 @@ function Login() {
                 <button type="submit" className="btn btn-primary">
                     Login
                 </button>
-                </fieldset>
                 
                 
         </form>
-        </div>
+             {/* <Form
+               form={loginForm}
+               initialValues={{ remember: true }}
+               onFinish={(values) => handleLogin(values)}
+               autoComplete="off"
+             >
+               <Form.Item
+                 name="email"
+                 rules={[{ required: true, message: "Please input your email!" }]}
+               >
+                 <Input
+                   className="input-login"
+                   placeholder="Email/Số điện thoại của bạn"
+                 />
+               </Form.Item>
+               <Form.Item
+                 name="password"
+                 rules={[
+                   { required: true, message: "Please input your password!" },
+                 ]}
+               >
+                 <Input.Password
+                   className="input-login"
+                   placeholder="Mật khẩu của bạn"
+                 />
+               </Form.Item>
+               <Form.Item name="remember" valuePropName="checked">
+                 <Checkbox className="checkbox-login">Remember me</Checkbox>
+               </Form.Item>
+               <Form.Item className="form-login">
+                 <Button htmlType="submit" className="btn-login">
+                   Đăng nhập
+                 </Button>
+               </Form.Item>
+               <Divider
+                 className="divider-login"
+                 style={{
+                   color: "white",
+                 }}
+               >
+                 Hoặc
+               </Divider>
+               <Form.Item style={{ pointerEvents: "none" }}>
+                 <Button
+                   style={{ pointerEvents: "none" }}
+                   className="btn-login btn-login-fb"
+                 >
+                   Đăng nhập với Facebook
+                   <FacebookFilled />
+                 </Button> */}
+               {/* </Form.Item> */}
+   
+               
+
+           </S.FormLogin>
+         </S.Inside>
+       </S.LoginContainer>
     );
 }
 export default Login;

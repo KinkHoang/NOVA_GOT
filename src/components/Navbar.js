@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { NavLink, useNavigate, useMatch } from "react-router-dom";
 
 function Navbar() {
+
     const [isToggle, setIsToggle] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
 

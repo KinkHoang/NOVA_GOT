@@ -1,20 +1,19 @@
-.form-login {
-    margin-top: 250px;
-    margin-left:  400px;
-    margin-right: 400px;
-    font-size: 24px;
+.input-login {
+    width: 90%;
+    margin-top: 20%;
+    font-size: 1.2rem;
+    padding-left: 2% ;
 }
-.form-group {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+.label-login {
+    margin-left: 8%;
 }
-
-#exampleInputEmail1{
-    margin-left: 32px;
+#input-login {
+    width: 90%;
+    margin-left: auto;
+    font-size: 1.2rem;
+    padding-left: 2% 
 }
-
-.btn {
-    margin-left: 105px;
+.btn-primary {
+    margin: auto;
+    margin-top: 7%;
 }

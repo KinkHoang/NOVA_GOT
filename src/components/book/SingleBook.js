@@ -3,19 +3,21 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchSingleBook } from "../../features/book/bookSlice";
 import { useSelector, useDispatch } from "react-redux";
-// import Loading from "../Loading";
+import Loading from "../Loading";
 import image from "../../images/dragon.jpg";
 
 function SingleBook() {
     const dispatch = useDispatch();
 
     const { id } = useParams();
-    const { book } = useSelector((store) => store.books);
+    const { book, isLoading } = useSelector((store) => store.books);
 
     useEffect(() => {
         dispatch(fetchSingleBook(id));
     }, [dispatch, id]);
-
+    if (isLoading) {
+        return <Loading />;
+    }
     let {
         name,
         authors,

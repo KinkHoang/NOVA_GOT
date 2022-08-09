@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../../components/character/character";
 import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
+
 import {
     fetchCharacters,
     decPage,
@@ -10,13 +12,12 @@ import {
 } from "../../features/character/characterSlice";
 
 function Characters() {
-    const {  page } = useSelector((store) => {
-        return store.characters;
-    });
+     const { isLoading, page } = useSelector((store) => store.characters);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchCharacters(page));
     }, [dispatch, page]);
+
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -41,8 +42,15 @@ function Characters() {
           setFilteredData(data);
       }
     }
-
+    if (isLoading) {
+        return (
+            <main>
+                <Loading />
+            </main>
+        );
+    }
     return (
+        
         <Wrapper>
             <div className="section-center">
                 <div className="title">

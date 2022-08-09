@@ -1,15 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import {
+    Input,
+    Space
+  } from 'antd';
+import {
+    SearchOutlined,
+  } from '@ant-design/icons';
+import './style.css';
 export default function Dashboard (props){
 
     return (
         <>
-        <div style={{ display: "flex", flexWrap:"wrap", padding: "50px" }}>
-            <div style={{width: "100%" }} >
-                <input type="text" onChange={(e) => props.handleSearch(e)}  placeholder="enter first name to search" />
-            </div>
+        <Space style={{ paddingTop: 8, display: "flex" }}>
+            <SearchOutlined style={{ fontSize: 30}} />
+            <Input className="search-input"
+                placeholder='Enter name to search..'
+                onChange={(e) => props.handleSearch(e)}
+            />
+        </Space>
+        <div style={{ display: "flex", flexWrap:"wrap", paddingTop: "50px" }}>
             { props.filteredData && props.filteredData.map(item => 
                 <Wrapper key={ item.id } style={{width: "45%",  boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
                     <h4>Name: {item.name}</h4>

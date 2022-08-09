@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../../components/book/book";
 import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
+
 import {
     fetchBooks,
     decPage,
@@ -10,13 +12,13 @@ import {
 } from "../../features/book/bookSlice";
 
 function Books() {
-    const {  page } = useSelector((store) => {
-        return store.books;
-    });
+     const { isLoading, books, page } = useSelector((store) => store.books);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchBooks(page));
     }, [dispatch, page]);
+    console.log(page, books);
+
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -41,7 +43,13 @@ function Books() {
           setFilteredData(data);
       }
     }
-
+    if (isLoading) {
+        return (
+            <main>
+                <Loading />
+            </main>
+        );
+    }
     return (
         <Wrapper>
             <div className="section-center">

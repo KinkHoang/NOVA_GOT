@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../../components/house/house";
 import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
+
 import {
     fetchHouses,
     decPage,
@@ -10,14 +12,12 @@ import {
 } from "../../features/house/houseSlice";
 
 function Houses() {
-    const {  page } = useSelector((store) => {
-        return store.houses;
-    });
+    const { isLoading, houses, page } = useSelector((store) => store.houses);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchHouses(page));
     }, [dispatch, page]);
-
+    console.log(page, houses);
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
@@ -41,7 +41,13 @@ function Houses() {
           setFilteredData(data);
       }
     }
-
+    if (isLoading) {
+        return (
+            <main>
+                <Loading />
+            </main>
+        );
+    }
     return (
         <Wrapper>
             <div className="section-center">

@@ -18,7 +18,7 @@ function Explore() {
                         />
                         <div className="data">
                             <h4 className="gutter-botton">Charaters</h4>
-                            <p>Get all the Characters details of GOT</p>
+                            <p>Get all the Characters details</p>
                             <Link
                                 to={"/characters"}
                                 className="btn btn-primary btn-primary-sm"
