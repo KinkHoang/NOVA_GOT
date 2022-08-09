@@ -25,7 +25,7 @@ export default function Dashboard (props){
         <div style={{ display: "flex", flexWrap:"wrap", paddingTop: "50px" }}>
 
             { props.filteredData && props.filteredData.map(item => 
-                <Wrapper key={ item.id } style={{ width: "40%" ,boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
+                <Wrapper key={ item.id } style={{ width: "43%" ,boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
                     <h4>Name: {item.name}</h4>
                     <h5>gender: {item.gender}</h5>
                     <h5>culture: {item.culture}</h5>

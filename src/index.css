@@ -241,9 +241,7 @@ p {
     h4 {
         line-height: 1;
     }
-    .section {
-        height: calc(100vh - 70px);
-    }
+
     .section-center {
         width: 80%;
         margin: 0 auto;
