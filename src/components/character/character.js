@@ -41,7 +41,12 @@ export default function Dashboard (props){
 
 }
 const Wrapper = styled.div`
+     @media screen and (max-width:450px){
 
+        .hjx0AJ {
+            width: 42%
+        }
+    }
     h4 {
         color: var(--clr-primary-4);
     }

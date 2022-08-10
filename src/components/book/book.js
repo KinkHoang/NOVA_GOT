@@ -44,4 +44,11 @@ const Wrapper = styled.div`
     h4 {
         color: var(--clr-primary-4);
     }
+    @media screen and (max-width:450px){
+
+        .gQQeAZ {
+            width: 42%
+        }
+    
+    }
 `;

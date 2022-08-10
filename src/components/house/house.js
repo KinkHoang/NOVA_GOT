@@ -25,7 +25,7 @@ export default function Dashboard (props){
         <div style={{ display: "flex", flexWrap:"wrap", paddingTop: "50px" }}>
 
             { props.filteredData && props.filteredData.map(item => 
-                <Wrapper key={ item.url.split("/").pop() } style={{width: "43%",  boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
+                <Wrapper key={ item.url.split("/").pop() } className="house" style={{width: "43%",  boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
                     <h4>Name: {item.name}</h4>
                     <h5>Region: {item.region}</h5>
                     <h5>Word: {item.words}</h5>
@@ -43,5 +43,16 @@ export default function Dashboard (props){
 const Wrapper = styled.div`
     h4 {
         color: var(--clr-primary-4);
+    }
+    .house{
+        width: 43%;
+        box-Shadow: 0 0 8px rgba(0,0,0,0.16);
+        margin: 15px;
+        padding: 15px;
+    }
+    @media screen and (max-width:450px){
+
+
+
     }
 `;

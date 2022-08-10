@@ -142,6 +142,7 @@ const Wrapper = styled.nav`
         transform: rotate(90deg);
     }
     .navbar-fa{
+        cursor: pointer;
         display: flex;
         justify-content: space-between;
     }
