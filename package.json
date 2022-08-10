@@ -2,9 +2,6 @@
   "name": "game-of-thrones",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "14.19.1"
-  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.8.3",
