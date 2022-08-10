@@ -1,12 +1,15 @@
-import { FaBars } from "react-icons/fa";
+import { FaBars , FaPowerOff} from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { NavLink, useMatch } from "react-router-dom";
+
+
+import { NavLink, useMatch, useNavigate } from "react-router-dom";
 
 function Navbar() {
-
+    const navigate = useNavigate();
     const [isToggle, setIsToggle] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
+
 
     const match = useMatch("/");
 
@@ -48,24 +51,16 @@ function Navbar() {
                 } ${!match && "normal"}`}
             >
                 <div className="navbar-header">
-                <ul className="navbar-links" ref={linksRef}>
-                        <li>
-                            <NavLink
-                                className={({ isActive }) =>
-                                    isActive ? "link active" : "link"
-                                }
-                                to={"/home"}
-                            >
-                                <h3>Nova GOT</h3>
-                            </NavLink>
-                        </li>
-                       
-                    </ul>
-                
-                    <FaBars
+                <h2 className="logo"  onClick={() => navigate("/home")}>Nova GOT</h2>
+                    <FaBars id="dis"
                         className={`navbar-toggle ${isToggle && "rotate"}`}
                         onClick={() => setIsToggle(!isToggle)}
                     />
+                    <FaPowerOff id="dis"
+                                className={`navbar-toggle`}
+                                onClick={() => navigate("/")}
+                            />
+                            
                 </div>
                 <div className="navbar-links-container" ref={linksContainerRef}>
                     <ul className="navbar-links" ref={linksRef}>
@@ -100,24 +95,16 @@ function Navbar() {
                             </NavLink>
                         </li>
                     </ul>
-                </div>
-                <div className="navbar-header2" >
-                <ul className="navbar-links" ref={linksRef}>
-                        <li>
-                            <NavLink
-                                className={({ isActive }) =>
-                                    isActive ? "link active" : "link"
-                                }
-                                to={"/"}
-                            >
-                                <h4>LogOut</h4>
-                            </NavLink>
-                        </li>
-                       
-                    </ul>
-                    
 
                 </div>
+
+                <FaPowerOff className="navbar-fa"
+                                      
+                        onClick={() => navigate("/")}
+                    />
+
+
+                
             </div>
         </Wrapper>
     );
@@ -138,20 +125,12 @@ const Wrapper = styled.nav`
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
-        text-transform: capitalize;
-        h2 {
+        text-transform: capitalize;   
+        .logo {
             cursor: pointer;
-            color: var(--clr-primary-4);
         }
     }
-        .navbar-header2 {
-
-        h4 {
-            cursor: pointer;
-
-        }
-    }
-
+   
     .navbar-toggle {
         cursor: pointer;
         color: rgb(95, 171, 246);
@@ -162,12 +141,18 @@ const Wrapper = styled.nav`
         color: var(--clr-primary-4);
         transform: rotate(90deg);
     }
+    .navbar-fa{
+        display: flex;
+        justify-content: space-between;
+    }
 
     .navbar-header svg,
     .navbar-social-icons svg {
         fill: dodgerblue;
     }
-
+    .link.active {
+        border-bottom: 2px solid var(--clr-primary-6);
+    }
     .link {
         cursor: pointer;
         display: block;
@@ -187,19 +172,31 @@ const Wrapper = styled.nav`
 
     .navbar-links-container {
         overflow: hidden;
-
         position: absolute;
         z-index: 4;
-        .link.active {
-        border-bottom: 2px solid var(--clr-primary-6);
+        
     }
+ 
+    @media screen and (max-width:800px){
+        #dis {
+            display:none;
+        }
+        .navbar-fa {
+            display: none;
+        }
+        
+        .navbar-header {
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
     }
-
     @media screen and (min-width: 800px) {
         position: fixed;
         z-index: 3;
         top: 0;
         .navbar-center {
+            display: flex;
             height: 70px;
             width: 100vw;
             display: flex;
@@ -210,6 +207,7 @@ const Wrapper = styled.nav`
             height: auto !important;
             position: unset;
         }
+
         .link {
             width: auto;
             color: inherit;

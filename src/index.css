@@ -159,6 +159,7 @@ p {
     height: 3px;
     background-color: var(--clr-primary-5);
     margin-top: 0.3rem;
+    margin-bottom: 1rem;
 }
 
 .loading-container {
