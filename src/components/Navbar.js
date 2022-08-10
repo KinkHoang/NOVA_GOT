@@ -178,9 +178,7 @@ const Wrapper = styled.nav`
     }
  
     @media screen and (max-width:800px){
-        #dis {
-            display:none;
-        }
+
         .navbar-fa {
             display: none;
         }
