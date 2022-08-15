@@ -35,7 +35,6 @@ function Login() {
             sessionStorage.setItem('auth-token', token);
             handleToken(Date.now());
             navigate("/");
-
         }
     }
 
