@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Dashboard from "../../components/character/character";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
+import Navbar from "../../components/Navbar.js"
 
 import {
     fetchCharacters,
@@ -52,6 +53,7 @@ function Characters() {
     return (
         
         <Wrapper>
+            <Navbar/>
             <div className="section-center">
                 <div className="title">
                     <h3 className="heading">Characters</h3>

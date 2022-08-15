@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import {useState} from "react";
+import {useState, useContext} from "react";
 import { Typography, Input, Form} from "antd";
+import { AuthContext } from "../context/AuthContext";
 
 import "./style.css";
 import * as S from "./styles";
 
 const { Title } = Typography;
 function Login() {
+  const {  handleToken } = useContext(AuthContext);
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
 
@@ -22,15 +24,17 @@ function Login() {
 
     const handleLoginSubmit = () => {
 
-        let hardcodedCred = {
+        let data = {
             email: 'hoang@gmail.com',
             password: '123456'
         }
 
-        if ((emailInput === hardcodedCred.email) && (passwordInput === hardcodedCred.password)) {
+        if ((emailInput === data.email) && (passwordInput === data.password)) {
+            window.localStorage.setItem("token", data.token);
             const token = '123456abcdef';
             sessionStorage.setItem('auth-token', token);
-            navigate("/home");
+            handleToken(Date.now());
+            navigate("/");
 
         }
     }

@@ -1,0 +1,36 @@
+.column {
+  /* flex: 50%; */
+  padding: 10px;
+  height: 300px;
+}
+.left {
+    width: 40%;
+  }
+  
+  .right {
+    width: 60%;
+  }
+
+.row {
+  display: flex;
+}
+.vl {
+    border-left: 2px solid black;
+    height: 700px;
+    position: absolute;
+    left: 40%;
+    margin-left: -3px;
+    top: 80px;
+  }
+  .topRight {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+  }
+  .topRightdown {
+    position: absolute;
+    top: 45px;
+    right: 16px;
+    font-size: 18px;
+  }

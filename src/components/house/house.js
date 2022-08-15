@@ -17,7 +17,7 @@ export default function Dashboard (props){
             <SearchOutlined  />
             <Input
                 className="search-input"
-                placeholder='Enter name to search...'
+                placeholder='Search...'
                 size='large'
                 onChange={(e) => props.handleSearch(e)}
             />

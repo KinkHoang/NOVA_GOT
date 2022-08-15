@@ -1,5 +1,7 @@
 import { FaBars , FaPowerOff} from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
+
+
 import styled from "styled-components";
 
 
@@ -10,6 +12,10 @@ function Navbar() {
     const [isToggle, setIsToggle] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
 
+    let logout = () => {
+        window.localStorage.removeItem("token");
+        navigate("/login");
+    }
 
     const match = useMatch("/");
 
@@ -51,14 +57,14 @@ function Navbar() {
                 } ${!match && "normal"}`}
             >
                 <div className="navbar-header">
-                <h2 className="logo"  onClick={() => navigate("/home")}>Nova GOT</h2>
+                <h2 className="logo"  onClick={() => navigate("/")}>Nova GOT</h2>
                     <FaBars id="dis"
                         className={`navbar-toggle ${isToggle && "rotate"}`}
                         onClick={() => setIsToggle(!isToggle)}
                     />
                     <FaPowerOff id="dis"
                                 className={`navbar-toggle`}
-                                onClick={() => navigate("/")}
+                                onClick={logout}
                             />
                             
                 </div>
@@ -100,7 +106,7 @@ function Navbar() {
 
                 <FaPowerOff className="navbar-fa"
                                       
-                        onClick={() => navigate("/")}
+                                      onClick={logout}
                     />
 
 
@@ -128,6 +134,7 @@ const Wrapper = styled.nav`
         text-transform: capitalize;   
         .logo {
             cursor: pointer;
+            color: var(--clr-primary-6);
         }
     }
    
@@ -182,6 +189,7 @@ const Wrapper = styled.nav`
 
         .navbar-fa {
             display: none;
+            width: 100%
         }
         
         .navbar-header {

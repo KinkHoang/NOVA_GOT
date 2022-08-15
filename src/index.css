@@ -98,7 +98,6 @@ p {
     cursor: pointer;
 }
 .section-center {
-    display: grid;
     place-items: center;
     /* margin-top: 50px; */
     height: 100%;

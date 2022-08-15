@@ -22,14 +22,13 @@ export default function Dashboard (props){
         </Space>
         <div style={{ display: "flex", flexWrap:"wrap", paddingTop: "50px" }}>
             { props.filteredData && props.filteredData.map(item => 
-                <Wrapper key={ item.url.split("/").pop() } style={{width: "43%",  boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
+                <Wrapper key={ item.url.split("/").pop() } style={{ width: "43%" ,boxShadow: "0 0 8px rgba(0,0,0,0.16)", margin: "15px", padding: "15px" }} >
                     <h4>Name: {item.name}</h4>
                     <h5>gender: {item.publisher}</h5>
                     <h5>culture: {item.culture}</h5>
                     <h5>aliases: {item.released}</h5>
                     <h5>aliases: {item.country}</h5>
                     <h5>id: {item.url.split("/").pop()}</h5>
-
                     <Link to={`/book/${item.url.split("/").pop()}`}>Show More</Link> 
                 </Wrapper>
             )}
@@ -40,7 +39,9 @@ export default function Dashboard (props){
 }
 
 const Wrapper = styled.div`
+    a {
 
+    }
     h4 {
         color: var(--clr-primary-4);
     }
